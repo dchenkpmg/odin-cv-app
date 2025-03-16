@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Card from "./components/Card.jsx";
+import Header from "./components/Header.jsx";
+import Personal from "./components/Personal.jsx";
+import Preview from "./components/Preview.jsx";
+
+import { useState } from "react";
+import "./styles/App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const initialPersonal = {
+    name: "Dylan Chen",
+    email: "fakeemail@gmail.com",
+    phone: "64256463",
+    address: "fake st, 24 imaginary place",
+    bio: "talented clown",
+  };
+  const initialEducation = [
+    {
+      school: "Clown Academy for Gifted Jesters",
+      degree: "BSc Circus Science",
+      startDate: "20/12/1999",
+      endDate: "31/11/2006",
+    },
+  ];
+  const [personal, setPersonal] = useState(initialPersonal);
+  const [education, setEducation] = useState(initialEducation);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header></Header>
+      <div className="main-section">
+        <div className="sub-section form-section">
+          <div className="form-column">
+            <Card title="Personal Info">
+              <Personal state={personal} setState={setPersonal}></Personal>
+            </Card>
+            <Card title="Education">
+              <Eduation state={education} setState={setEducation}></Eduation>
+            </Card>
+            <Card title="Work Experience"></Card>
+          </div>
+        </div>
+        <div className="sub-section">
+          <Preview personal={personal}></Preview>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

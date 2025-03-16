@@ -1,0 +1,9 @@
+header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #174d98;
+    margin-top: 2rem;
+}

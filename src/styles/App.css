@@ -1,0 +1,38 @@
+/* src/index.css or src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.main-section {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    /* gap: 2rem; */
+}
+
+.sub-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid black;
+    min-width: 300px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.form-column {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    justify-content: center;
+}
