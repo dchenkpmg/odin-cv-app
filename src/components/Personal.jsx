@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-export default function Personal({ state, setState }) {
-  const [tempData, setTempData] = useState({ ...state });
+export default function Personal({ personal, setPersonal }) {
+  const [tempData, setTempData] = useState({ ...personal });
   const [isEdit, setIsEdit] = useState(false);
 
   const handleEdit = () => {
-    setTempData({ ...state });
+    setTempData({ ...personal });
     setIsEdit(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState(tempData);
+    setPersonal(tempData);
     setIsEdit(false);
   };
 

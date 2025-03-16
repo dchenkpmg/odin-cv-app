@@ -2,6 +2,7 @@ import Card from "./components/Card.jsx";
 import Header from "./components/Header.jsx";
 import Personal from "./components/Personal.jsx";
 import Preview from "./components/Preview.jsx";
+import Education from "./components/Education.jsx";
 
 import { useState } from "react";
 import "./styles/App.css";
@@ -21,6 +22,12 @@ function App() {
       startDate: "20/12/1999",
       endDate: "31/11/2006",
     },
+    {
+      school: "Clown Academy for Gifted Jesters",
+      degree: "BSc Circus Science",
+      startDate: "20/12/1999",
+      endDate: "31/11/2006",
+    },
   ];
   const [personal, setPersonal] = useState(initialPersonal);
   const [education, setEducation] = useState(initialEducation);
@@ -31,10 +38,16 @@ function App() {
         <div className="sub-section form-section">
           <div className="form-column">
             <Card title="Personal Info">
-              <Personal state={personal} setState={setPersonal}></Personal>
+              <Personal
+                personal={personal}
+                setPersonal={setPersonal}
+              ></Personal>
             </Card>
             <Card title="Education">
-              <Eduation state={education} setState={setEducation}></Eduation>
+              <Education
+                education={education}
+                setEducation={setEducation}
+              ></Education>
             </Card>
             <Card title="Work Experience"></Card>
           </div>

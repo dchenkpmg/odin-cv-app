@@ -11,9 +11,12 @@ export default function Card({ title, children }) {
   }
 
   return (
-    <div>
+    <div className="card">
       <button onClick={handleClick}>
-        <img src={isVisible ? visibleArrow : hiddenArrow}></img>
+        <img
+          src={isVisible ? visibleArrow : hiddenArrow}
+          alt="Toggle visibility"
+        ></img>
         <span>{title}</span>
       </button>
       {isVisible && children}
