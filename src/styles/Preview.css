@@ -1,0 +1,19 @@
+.preview {
+    height: 80vh;
+    aspect-ratio: 1 / 1.414;
+    background-color: #ffffffde;
+    box-shadow: #00000040 0 14px 28px, #00000038 0 10px 10px;
+    color: #242424;
+    font-size: 1.2vh;
+    position: fixed;
+    min-width: 25rem;
+    width: 45rem;
+}
+
+@media (max-width: 768px) {
+    .preview {
+        position: relative;
+        margin: 1vh 2vw;
+        width: 25rem;
+    }
+}

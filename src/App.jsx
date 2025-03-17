@@ -49,7 +49,7 @@ function App() {
     <>
       <Header></Header>
       <div className="main-section">
-        <div className="sub-section form-section">
+        <div className="form-section">
           <Card title="Personal Info">
             <Personal personal={personal} setPersonal={setPersonal}></Personal>
           </Card>
@@ -66,7 +66,7 @@ function App() {
             ></Experience>
           </Card>
         </div>
-        <div className="sub-section">
+        <div className="preview-section">
           <Preview
             personal={personal}
             education={education}
