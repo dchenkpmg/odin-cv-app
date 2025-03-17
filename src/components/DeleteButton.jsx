@@ -1,13 +1,8 @@
-export default function DeleteButton({
-  index,
-  education,
-  setEducation,
-  setTempData,
-}) {
+export default function DeleteButton({ index, state, setState, setTempData }) {
   const handleDelete = () => {
-    const newState = [...education];
+    const newState = [...state];
     newState.splice(index, 1);
-    setEducation(newState);
+    setState(newState);
     setTempData(newState);
   };
 

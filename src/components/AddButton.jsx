@@ -1,19 +1,14 @@
 import "../styles/Form.css";
 
-export default function AddButton({
-  education,
-  setEducation,
-  setTempData,
-  setIsEdit,
-}) {
+export default function AddButton({ state, setState, setTempData, setIsEdit }) {
   const handleAdd = () => {
     const newState = [
-      ...education,
+      ...state,
       { school: "", degree: "", startDate: "", endDate: "" },
     ];
-    setEducation(newState);
+    setState(newState);
     setTempData(newState);
-    setIsEdit(education.length);
+    setIsEdit(state.length);
   };
   return (
     <div className="add-btn-container">

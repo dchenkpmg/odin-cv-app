@@ -3,53 +3,55 @@ import "../styles/Form.css";
 import DeleteButton from "./DeleteButton.jsx";
 import AddButton from "./AddButton.jsx";
 
-export default function Education({ education, setEducation }) {
-  const [tempData, setTempData] = useState([...education]);
+export default function Experience({ experience, setExperience }) {
+  const [tempData, setTempData] = useState([...experience]);
   const [isEdit, setIsEdit] = useState(null);
 
   const handleEdit = (index) => {
-    setTempData([...education]);
+    setTempData([...experience]);
     setIsEdit(index);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEducation([...tempData]);
+    setExperience([...tempData]);
     setIsEdit(false);
   };
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const updatedEducation = [...tempData];
-    updatedEducation[index] = {
-      ...updatedEducation[index],
+    const updatedExperience = [...tempData];
+    updatedExperience[index] = {
+      ...updatedExperience[index],
       [name]: value,
     };
-    setTempData(updatedEducation);
+    setTempData(updatedExperience);
   };
 
   return (
     <>
-      {education.map((edu, index) => (
+      {experience.map((work, index) => (
         <form onSubmit={handleSubmit} key={index} className="form-wrapper">
           <div className="input-container">
-            <label htmlFor={`school-${index}`}>School: </label>
+            <label htmlFor={`job-${index}`}>Job: </label>
             <input
               type="text"
-              id={`school-${index}`}
-              name="school"
-              value={isEdit === index ? tempData[index].school : edu.school}
+              id={`job-${index}`}
+              name="job"
+              value={isEdit === index ? tempData[index].job : work.job}
               onChange={(e) => handleChange(e, index)}
               disabled={isEdit !== index}
             />
           </div>
           <div className="input-container">
-            <label htmlFor={`degree-${index}`}>Degree: </label>
+            <label htmlFor={`employer-${index}`}>Employer: </label>
             <input
               type="text"
-              id={`degree-${index}`}
-              name="degree"
-              value={isEdit === index ? tempData[index].degree : edu.degree}
+              id={`employer-${index}`}
+              name="employer"
+              value={
+                isEdit === index ? tempData[index].employer : work.employer
+              }
               onChange={(e) => handleChange(e, index)}
               disabled={isEdit !== index}
             />
@@ -61,7 +63,7 @@ export default function Education({ education, setEducation }) {
               id={`startDate-${index}`}
               name="startDate"
               value={
-                isEdit === index ? tempData[index].startDate : edu.startDate
+                isEdit === index ? tempData[index].startDate : work.startDate
               }
               onChange={(e) => handleChange(e, index)}
               disabled={isEdit !== index}
@@ -73,7 +75,21 @@ export default function Education({ education, setEducation }) {
               type="date"
               id={`endDate-${index}`}
               name="endDate"
-              value={isEdit === index ? tempData[index].endDate : edu.endDate}
+              value={isEdit === index ? tempData[index].endDate : work.endDate}
+              onChange={(e) => handleChange(e, index)}
+              disabled={isEdit !== index}
+            />
+          </div>
+          <div className="input-container">
+            <label htmlFor={`description-${index}`}>Description: </label>
+            <textarea
+              id={`description-${index}`}
+              name="description"
+              value={
+                isEdit === index
+                  ? tempData[index].description
+                  : work.description
+              }
               onChange={(e) => handleChange(e, index)}
               disabled={isEdit !== index}
             />
@@ -97,8 +113,8 @@ export default function Education({ education, setEducation }) {
             </button>
             <DeleteButton
               index={index}
-              state={education}
-              setState={setEducation}
+              state={experience}
+              setState={setExperience}
               setTempData={setTempData}
             ></DeleteButton>
           </div>
@@ -106,8 +122,8 @@ export default function Education({ education, setEducation }) {
         </form>
       ))}
       <AddButton
-        education={education}
-        setEducation={setEducation}
+        state={experience}
+        setState={setExperience}
         setTempData={setTempData}
         setIsEdit={setIsEdit}
       ></AddButton>
