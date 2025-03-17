@@ -7,7 +7,20 @@
     font-size: 1.2vh;
     position: fixed;
     min-width: 25rem;
-    width: 45rem;
+    width: 35vw;
+}
+
+.personal-preview {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.right-preview {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 @media (max-width: 768px) {
