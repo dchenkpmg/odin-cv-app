@@ -1,0 +1,48 @@
+input {
+    width: 20rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: inherit;
+}
+
+textarea {
+    height: 10rem;
+    font-family: inherit;
+    /* font-size: inherit; */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+
+.button-area {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+}
+
+.button-area .edit-btn {
+    background-color: rgb(0, 179, 255);
+}
+
+.button-area .submit-btn {
+    background-color: rgba(13, 213, 63, 0.656);
+    color: #ffffff
+}
+
+.button-area button {
+    border: 1px solid black;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}

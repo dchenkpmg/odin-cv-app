@@ -36,21 +36,16 @@ function App() {
       <Header></Header>
       <div className="main-section">
         <div className="sub-section form-section">
-          <div className="form-column">
-            <Card title="Personal Info">
-              <Personal
-                personal={personal}
-                setPersonal={setPersonal}
-              ></Personal>
-            </Card>
-            <Card title="Education">
-              <Education
-                education={education}
-                setEducation={setEducation}
-              ></Education>
-            </Card>
-            <Card title="Work Experience"></Card>
-          </div>
+          <Card title="Personal Info">
+            <Personal personal={personal} setPersonal={setPersonal}></Personal>
+          </Card>
+          <Card title="Education">
+            <Education
+              education={education}
+              setEducation={setEducation}
+            ></Education>
+          </Card>
+          <Card title="Work Experience"></Card>
         </div>
         <div className="sub-section">
           <Preview personal={personal}></Preview>

@@ -12,7 +12,7 @@ export default function Card({ title, children }) {
 
   return (
     <div className="card">
-      <button onClick={handleClick}>
+      <button onClick={handleClick} className="drop-down">
         <img
           src={isVisible ? visibleArrow : hiddenArrow}
           alt="Toggle visibility"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Form.css";
 
 export default function Education({ education, setEducation }) {
   const [tempData, setTempData] = useState([...education]);

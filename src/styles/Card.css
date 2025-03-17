@@ -1,8 +1,8 @@
-button {
+.drop-down {
     display: flex;
     border: none;
     background: none;
-    padding: 0;
+    padding: 0.5rem;
     text-align: left;
     align-items: center;
 }

@@ -27,18 +27,3 @@ body {
     align-items: center;
     gap: 2rem;
 }
-
-.form-column {
-    display: flex;
-    gap: 3rem;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-}
-
-input {
-    width: 20rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
