@@ -26,7 +26,7 @@ export default function Personal({ personal, setPersonal }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-wrapper">
         <div className="input-container">
           <label htmlFor="name">Name: </label>
           <input
