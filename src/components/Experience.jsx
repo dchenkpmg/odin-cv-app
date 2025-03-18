@@ -126,6 +126,13 @@ export default function Experience({ experience, setExperience }) {
         setState={setExperience}
         setTempData={setTempData}
         setIsEdit={setIsEdit}
+        newSection={{
+          job: "Placeholder",
+          employer: "Placeholder",
+          startDate: "2000-11-20",
+          endDate: "2000-11-30",
+          description: "Placeholder",
+        }}
       ></AddButton>
     </>
   );

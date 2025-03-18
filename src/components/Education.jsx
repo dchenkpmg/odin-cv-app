@@ -61,7 +61,11 @@ export default function Education({ education, setEducation }) {
               id={`startDate-${index}`}
               name="startDate"
               value={
-                isEdit === index ? tempData[index].startDate : edu.startDate
+                isEdit === index
+                  ? new Date(tempData[index].startDate)
+                      .toISOString()
+                      .split("T")[0]
+                  : edu.startDate
               }
               onChange={(e) => handleChange(e, index)}
               disabled={isEdit !== index}
@@ -106,10 +110,16 @@ export default function Education({ education, setEducation }) {
         </form>
       ))}
       <AddButton
-        education={education}
-        setEducation={setEducation}
+        state={education}
+        setState={setEducation}
         setTempData={setTempData}
         setIsEdit={setIsEdit}
+        newSection={{
+          school: "Placeholder",
+          degree: "Placeholder",
+          startDate: "2000-11-20",
+          endDate: "2000-11-30",
+        }}
       ></AddButton>
     </>
   );

@@ -1,11 +1,14 @@
 import "../styles/Form.css";
 
-export default function AddButton({ state, setState, setTempData, setIsEdit }) {
+export default function AddButton({
+  state,
+  setState,
+  setTempData,
+  setIsEdit,
+  newSection,
+}) {
   const handleAdd = () => {
-    const newState = [
-      ...state,
-      { school: "", degree: "", startDate: "", endDate: "" },
-    ];
+    const newState = [...state, newSection];
     setState(newState);
     setTempData(newState);
     setIsEdit(state.length);
