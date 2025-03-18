@@ -47,6 +47,7 @@ function App() {
   const [experience, setExperience] = useState(initialExperience);
   return (
     <>
+      <title>CV App</title>
       <Header></Header>
       <div className="main-section">
         <div className="form-section">
