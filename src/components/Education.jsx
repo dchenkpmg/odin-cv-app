@@ -4,42 +4,43 @@ import DeleteButton from "./DeleteButton.jsx";
 import AddButton from "./AddButton.jsx";
 
 export default function Education({ education, setEducation }) {
-  const [tempData, setTempData] = useState([...education]);
+  const [formData, setFormData] = useState({});
   const [isEdit, setIsEdit] = useState(null);
 
   const handleEdit = (index) => {
-    setTempData([...education]);
+    setFormData(education[index]);
     setIsEdit(index);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, index) => {
     e.preventDefault();
-    setEducation([...tempData]);
+    const updatedEducation = [...education];
+    updatedEducation[index] = formData;
+    setEducation(updatedEducation);
     setIsEdit(false);
   };
 
-  const handleChange = (e, index) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    const updatedEducation = [...tempData];
-    updatedEducation[index] = {
-      ...updatedEducation[index],
-      [name]: value,
-    };
-    setTempData(updatedEducation);
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <>
       {education.map((edu, index) => (
-        <form onSubmit={handleSubmit} key={index} className="form-wrapper">
+        <form
+          onSubmit={(e) => handleSubmit(e, index)}
+          key={index}
+          className="form-wrapper"
+        >
           <div className="input-container">
             <label htmlFor={`school-${index}`}>School: </label>
             <input
               type="text"
               id={`school-${index}`}
               name="school"
-              value={isEdit === index ? tempData[index].school : edu.school}
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.school : edu.school}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -49,8 +50,8 @@ export default function Education({ education, setEducation }) {
               type="text"
               id={`degree-${index}`}
               name="degree"
-              value={isEdit === index ? tempData[index].degree : edu.degree}
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.degree : edu.degree}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -60,14 +61,8 @@ export default function Education({ education, setEducation }) {
               type="date"
               id={`startDate-${index}`}
               name="startDate"
-              value={
-                isEdit === index
-                  ? new Date(tempData[index].startDate)
-                      .toISOString()
-                      .split("T")[0]
-                  : edu.startDate
-              }
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.startDate : edu.startDate}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -77,8 +72,8 @@ export default function Education({ education, setEducation }) {
               type="date"
               id={`endDate-${index}`}
               name="endDate"
-              value={isEdit === index ? tempData[index].endDate : edu.endDate}
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.endDate : edu.endDate}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -103,7 +98,6 @@ export default function Education({ education, setEducation }) {
               index={index}
               state={education}
               setState={setEducation}
-              setTempData={setTempData}
             ></DeleteButton>
           </div>
           <hr></hr>
@@ -112,8 +106,8 @@ export default function Education({ education, setEducation }) {
       <AddButton
         state={education}
         setState={setEducation}
-        setTempData={setTempData}
         setIsEdit={setIsEdit}
+        setFormData={setFormData}
         newSection={{
           school: "Placeholder",
           degree: "Placeholder",

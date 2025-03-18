@@ -4,42 +4,43 @@ import DeleteButton from "./DeleteButton.jsx";
 import AddButton from "./AddButton.jsx";
 
 export default function Experience({ experience, setExperience }) {
-  const [tempData, setTempData] = useState([...experience]);
+  const [formData, setFormData] = useState({});
   const [isEdit, setIsEdit] = useState(null);
 
   const handleEdit = (index) => {
-    setTempData([...experience]);
+    setFormData(experience[index]);
     setIsEdit(index);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, index) => {
     e.preventDefault();
-    setExperience([...tempData]);
+    const updatedExperience = [...experience];
+    updatedExperience[index] = formData;
+    setExperience(updatedExperience);
     setIsEdit(false);
   };
 
-  const handleChange = (e, index) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    const updatedExperience = [...tempData];
-    updatedExperience[index] = {
-      ...updatedExperience[index],
-      [name]: value,
-    };
-    setTempData(updatedExperience);
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <>
       {experience.map((work, index) => (
-        <form onSubmit={handleSubmit} key={index} className="form-wrapper">
+        <form
+          onSubmit={(e) => handleSubmit(e, index)}
+          key={index}
+          className="form-wrapper"
+        >
           <div className="input-container">
             <label htmlFor={`job-${index}`}>Job: </label>
             <input
               type="text"
               id={`job-${index}`}
               name="job"
-              value={isEdit === index ? tempData[index].job : work.job}
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.job : work.job}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -49,10 +50,8 @@ export default function Experience({ experience, setExperience }) {
               type="text"
               id={`employer-${index}`}
               name="employer"
-              value={
-                isEdit === index ? tempData[index].employer : work.employer
-              }
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.employer : work.employer}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -62,10 +61,8 @@ export default function Experience({ experience, setExperience }) {
               type="date"
               id={`startDate-${index}`}
               name="startDate"
-              value={
-                isEdit === index ? tempData[index].startDate : work.startDate
-              }
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.startDate : work.startDate}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -75,8 +72,8 @@ export default function Experience({ experience, setExperience }) {
               type="date"
               id={`endDate-${index}`}
               name="endDate"
-              value={isEdit === index ? tempData[index].endDate : work.endDate}
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.endDate : work.endDate}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -85,12 +82,8 @@ export default function Experience({ experience, setExperience }) {
             <textarea
               id={`description-${index}`}
               name="description"
-              value={
-                isEdit === index
-                  ? tempData[index].description
-                  : work.description
-              }
-              onChange={(e) => handleChange(e, index)}
+              value={isEdit === index ? formData.description : work.description}
+              onChange={(e) => handleChange(e)}
               disabled={isEdit !== index}
             />
           </div>
@@ -115,7 +108,6 @@ export default function Experience({ experience, setExperience }) {
               index={index}
               state={experience}
               setState={setExperience}
-              setTempData={setTempData}
             ></DeleteButton>
           </div>
           <hr></hr>
@@ -124,8 +116,8 @@ export default function Experience({ experience, setExperience }) {
       <AddButton
         state={experience}
         setState={setExperience}
-        setTempData={setTempData}
         setIsEdit={setIsEdit}
+        setFormData={setFormData}
         newSection={{
           job: "Placeholder",
           employer: "Placeholder",

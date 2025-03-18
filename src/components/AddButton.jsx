@@ -3,14 +3,14 @@ import "../styles/Form.css";
 export default function AddButton({
   state,
   setState,
-  setTempData,
   setIsEdit,
+  setFormData,
   newSection,
 }) {
   const handleAdd = () => {
     const newState = [...state, newSection];
+    setFormData(newSection);
     setState(newState);
-    setTempData(newState);
     setIsEdit(state.length);
   };
   return (

@@ -1,9 +1,8 @@
-export default function DeleteButton({ index, state, setState, setTempData }) {
+export default function DeleteButton({ index, state, setState }) {
   const handleDelete = () => {
     const newState = [...state];
     newState.splice(index, 1);
     setState(newState);
-    setTempData(newState);
   };
 
   return (
